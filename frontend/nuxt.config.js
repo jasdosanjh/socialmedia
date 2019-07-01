@@ -37,13 +37,35 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: "http://backend.test/api"
   },
+
+  auth: {
+    endpoints: {
+      login: {
+        url: 'login',
+        method: 'post',
+        propertyName: 'meta.token'
+      },
+      user: {
+        url: 'user',
+        method: 'get',
+        propertyName: 'data'
+      },
+      logout: {
+        url: 'logout',
+        method: 'post'
+      }
+    }
+  },
+
   /*
   ** Build configuration
   */
