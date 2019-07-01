@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\UserLoginRequest;
 use App\User;
 use App\Http\Resources\User as UserResource;
 
@@ -22,6 +23,22 @@ class AuthController extends Controller
             'meta' => [
                 'token' => $token,
 
+            ],
+        ]);
+    }
+
+    public function login(UserLoginRequest $request) {
+        if (!$token = auth()->attempt($request->only(['email', 'password']))) {
+            return response()->json([
+                'errors' => [
+                    'email' => ['Sorry we cant find those credentials. Please try again.'],
+                ],
+            ], 422);
+        };
+
+        return (new UserResource($request->user()))->additional([
+            'meta' => [
+                'token' => $token,
             ],
         ]);
     }
