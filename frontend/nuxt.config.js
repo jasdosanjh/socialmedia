@@ -24,6 +24,10 @@ export default {
    ** Global CSS
    */
   css: [],
+
+  router: {
+    middleware: ['clearValidationErrors']
+  },
   /*
    ** Plugins to load before mounting the App
    */

@@ -23,7 +23,6 @@
           placeholder="Enter email"
         />
         <small class="form-text text-danger" v-if="errors.email">{{errors.email[0]}}</small>
-
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -47,6 +46,7 @@
 
 <script>
 export default {
+  middleware: ["guest"],
   data() {
     return {
       form: {
@@ -57,15 +57,24 @@ export default {
     };
   },
   methods: {
-    async submit() {
-      await this.$axios.$post("register", this.form);
-      await this.$auth.loginWith("local", {
-        data: {
-          email: this.form.email,
-          password: this.form.password
-        }
-      });
-      this.$router.push("/");
+    submit() {
+      this.$axios
+        .$post("register", this.form)
+        .then(data => {
+          this.$auth.loginWith("local", {
+            data: {
+              email: this.form.email,
+              password: this.form.password
+            }
+          });
+          console.log(data);
+          this.$router.push({
+            path: this.$route.query.redirect || "/"
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
