@@ -1,51 +1,41 @@
+
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <nuxt-link to="/" class="navbar-brand">Social Media</nuxt-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="primary">
+      <nuxt-link to="/" class="navbar-brand">Social Media</nuxt-link>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
           <nuxt-link to="/" class="nav-link">Home</nuxt-link>
-        </li>
-        <li class="nav-item">
           <nuxt-link to="/profile" class="nav-link">Profile</nuxt-link>
-        </li>
-      </ul>
+        </b-navbar-nav>
 
-      <template v-if="!authenticated">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <nuxt-link to="/login" class="nav-link">Login</nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link to="/register" class="nav-link">Register</nuxt-link>
-          </li>
-        </ul>
-      </template>
+        <template v-if="!authenticated">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <nuxt-link to="/login" class="nav-link">Login</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link to="/register" class="nav-link">Register</nuxt-link>
+            </li>
+          </ul>
+        </template>
 
-      <template v-if="authenticated">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link">{{user.name}}</a>
-          </li>
-          <li class="nav-item">
-            <a @click.prevent="logout" class="nav-link">Logout</a>
-          </li>
-        </ul>
-      </template>
-    </div>
-  </nav>
+        <template v-if="authenticated">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link">{{user.name}}</a>
+            </li>
+            <li class="nav-item">
+              <a @click.prevent="logout" class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </template>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
+
 
 <script>
 export default {
