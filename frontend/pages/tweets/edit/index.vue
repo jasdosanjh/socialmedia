@@ -8,6 +8,7 @@
         <small v-if="errors.tweet" class="form-text text-danger">{{errors.tweet[0]}}</small>
       </div>
       <button class="btn btn-outline-success">Update</button>
+      <button class="btn btn-outline-danger" @click="deleteTweet(tweet.id)">Delete</button>
     </form>
     <p class="mt-5 btn-outline-waring">
       <nuxt-link to="/tweets">Back to tweets</nuxt-link>
@@ -33,6 +34,10 @@ export default {
       await this.$axios.patch(`/tweets/${this.$route.params.id}`, {
         tweet: this.tweet.tweet
       });
+      this.$router.push("/tweets");
+    },
+    async deleteTweet(id) {
+      await this.$axios.$delete(`/tweets/${id}`);
       this.$router.push("/tweets");
     }
   }
