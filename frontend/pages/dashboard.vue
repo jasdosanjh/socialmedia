@@ -37,7 +37,7 @@ export default {
         .$post("/tweets", this.form)
         .then(data => {
           console.log(data);
-          this.$router.push("/");
+          this.$router.push("/tweets");
         })
         .catch(err => {
           console.log(err);
