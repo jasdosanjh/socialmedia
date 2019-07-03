@@ -5,6 +5,13 @@
       <p class="tweet">
         <nuxt-link :to="{name: 'tweets-id', params: {id: tweet.id}}">{{tweet.tweet}}</nuxt-link>
       </p>
+
+      <div v-if="authenticated">
+        <div v-if="user.id === tweet.user.id">
+          <nuxt-link :to="{name: 'tweets-edit', params: {id: tweet.id}}">Edit</nuxt-link>
+        </div>
+      </div>
+
       <p class="text-muted">{{tweet.created_at}} by {{tweet.user.name}}</p>
     </div>
   </div>
