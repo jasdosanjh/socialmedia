@@ -8,6 +8,7 @@
         <b-navbar-nav>
           <nuxt-link to="/" class="nav-link">Home</nuxt-link>
           <nuxt-link to="/profile" class="nav-link">Profile</nuxt-link>
+          <nuxt-link to="/dashboard" class="nav-link">Tweet</nuxt-link>
         </b-navbar-nav>
 
         <template v-if="!authenticated">

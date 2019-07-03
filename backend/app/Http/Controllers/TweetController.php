@@ -11,7 +11,7 @@ class TweetController extends Controller
 {
     public function store(TweetCreateRequest $request) {
         $tweet = new Tweet;
-        $tweet->title = $request->title;
+        $tweet->tweet = $request->tweet;
         $tweet->user()->associate($request->user());
 
         $tweet->save();

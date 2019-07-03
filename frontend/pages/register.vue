@@ -69,7 +69,7 @@ export default {
           });
           console.log(data);
           this.$router.push({
-            path: this.$route.query.redirect || "/"
+            path: this.$route.query.redirect || "/dashboard"
           });
         })
         .catch(err => {

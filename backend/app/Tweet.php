@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tweet extends Model
 {
     use Order;
-    protected $fillable = ['title'];
+    protected $fillable = ['tweet'];
     public function user() {
         return $this->belongsTo(User::class);
     }

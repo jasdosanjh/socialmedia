@@ -11,7 +11,7 @@ class Tweet extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'tweet' => $this->tweet,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffforHumans(),
             'user' => $this->user,
