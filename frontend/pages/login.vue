@@ -57,7 +57,7 @@ export default {
         .then(data => {
           console.log(data);
           this.$router.push({
-            path: this.$route.query.redirect || "/"
+            path: this.$route.query.redirect || "/tweets"
           });
         })
         .catch(err => {

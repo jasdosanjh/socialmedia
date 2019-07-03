@@ -2,7 +2,9 @@
   <div class="container">
     <h2>Latest Tweets</h2>
     <div v-for="(tweet, index) in tweets" :key="index" class="bg-light mt-5 mb-5">
-      <p class="tweet">{{tweet.tweet}}</p>
+      <p class="tweet">
+        <nuxt-link :to="{name: 'tweets-id', params: {id: tweet.id}}">{{tweet.tweet}}</nuxt-link>
+      </p>
       <p class="text-muted">{{tweet.created_at}} by {{tweet.user.name}}</p>
     </div>
   </div>
