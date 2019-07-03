@@ -23,4 +23,8 @@ class TweetController extends Controller
 
         return new TweetResource($tweet);
     }
+
+    public function show(Tweet $tweet) {
+        return new TweetResource($tweet);
+    }
 }
