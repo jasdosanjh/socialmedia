@@ -18,4 +18,8 @@ class TweetPolicy
     public function update(User $user, Tweet $tweet) {
         return $user->ownsTweet($tweet);
     }
+
+    public function destroy(User $user, Tweet $tweet) {
+        return $user->ownsTweet($tweet);
+    }
 }

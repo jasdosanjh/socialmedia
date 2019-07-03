@@ -35,4 +35,10 @@ class TweetController extends Controller
         $tweet->save();
         return new TweetResource($tweet);
     }
+
+    public function destroy(Tweet $tweet) {
+        $this->authorize('destroy', $tweet);
+        $tweet->delete();
+        return response(null, 204);
+    }
 }
