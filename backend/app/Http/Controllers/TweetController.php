@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Tweet;
 use App\Http\Resources\Tweet as TweetResource;
 use App\Http\Requests\TweetCreateRequest;
+use App\Http\Requests\UpdateTweetRequest;
 
 class TweetController extends Controller
 {
@@ -25,6 +26,13 @@ class TweetController extends Controller
     }
 
     public function show(Tweet $tweet) {
+        return new TweetResource($tweet);
+    }
+
+    public function update(UpdateTweetRequest $request, Tweet $tweet) {
+        $this->authorize('update', $tweet);
+        $tweet->tweet = $request->get('tweet', $tweet->tweet);
+        $tweet->save();
         return new TweetResource($tweet);
     }
 }

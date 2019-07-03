@@ -23,6 +23,10 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    public function ownsTweet(Tweet $tweet) {
+        return $this->id === $tweet->user->id;
+    }
+
     public function getJWTIdentifier()
     {
         // Returns the primary key of the user (user id)
