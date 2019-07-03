@@ -9,6 +9,11 @@ use App\Http\Requests\TweetCreateRequest;
 
 class TweetController extends Controller
 {
+    public function index() {
+        $tweets = Tweet::latestFirst()->get();
+        return TweetResource::collection($tweets);
+    }
+
     public function store(TweetCreateRequest $request) {
         $tweet = new Tweet;
         $tweet->tweet = $request->tweet;
