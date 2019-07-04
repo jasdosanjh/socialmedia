@@ -11,7 +11,7 @@
       <form @submit.prevent="create">
         <div class="form-group">
           <h4>Add a comment</h4>
-          <input v-model="body" type="text" class="form-control" placeholder="Comment...">
+          <input v-model="body" type="text" class="form-control" placeholder="Comment..." />
           <small v-if="errors.body" class="form-text text-danger">{{errors.body[0]}}</small>
         </div>
         <button class="btn btn-outline-primary">Add Comment</button>
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       tweet: "",
-      body: '',
+      body: ""
     };
   },
   async asyncData({ $axios, params }) {
@@ -37,8 +37,12 @@ export default {
   },
   methods: {
     async create() {
-      await this.$axios.$post(`/tweets/${this.$route.params.id}/comments`, {body: this.body})
-      this.$router.push('/tweets')
+      await this.$axios.$post(`/tweets/${this.$route.params.id}/comments`, {
+        body: this.body,
+        tweet_id: this.tweet.id,
+        user_id: this.user.id
+      });
+      this.$router.push("/tweets");
     }
   }
 };

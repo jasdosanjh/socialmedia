@@ -15,12 +15,4 @@ class Tweet extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
-
-    public function addComment($body) {
-
-        Comment::create([
-            'body' => request('body'),
-            'tweet_id' => $this->id
-        ]);
-    }
 }
