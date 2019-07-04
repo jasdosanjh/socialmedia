@@ -11,4 +11,9 @@ Route::group(['prefix' => 'tweets'], function() {
     Route::get('/{tweet}', 'TweetController@show');
     Route::patch('/{tweet}', 'TweetController@update')->middleware('auth:api');
     Route::delete('/{tweet}', 'TweetController@destroy')->middleware('auth:api');
+
+    // Comments Route Group
+    Route::group(['prefix' => '/{tweet}/comments'], function() {
+        Route::post('/', 'CommentController@store')->middleware('auth:api');
+    });
 });
