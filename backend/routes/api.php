@@ -14,6 +14,9 @@ Route::group(['prefix' => 'tweets'], function() {
 
     // Comments Route Group
     Route::group(['prefix' => '/{tweet}/comments'], function() {
+        Route::get('/{comment}', 'CommentController@show');
         Route::post('/', 'CommentController@store')->middleware('auth:api');
+        Route::patch('/{comment}', 'CommentController@update')->middleware('auth:api');
+        Route::delete('/{comment}', 'CommentController@destroy')->middleware('auth:api');
     });
 });

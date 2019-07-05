@@ -27,6 +27,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->id === $tweet->user->id;
     }
 
+    public function ownsComment(Comment $comment) {
+        return $this->id === $comment->user->id;
+    }
+
     public function getJWTIdentifier()
     {
         // Returns the primary key of the user (user id)

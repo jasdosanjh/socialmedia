@@ -4,6 +4,10 @@
       <p class="tweet">{{tweet.tweet}}</p>
       <hr />
       <p class="text-muted">{{tweet.created_at}} by {{tweet.user.name}}</p>
+      <div v-for="(comment, index) in tweet.comments" :key="index" class="ml-5">
+        {{comment.body}}
+        <p class="text-muted">{{comment.created_at}} by {{comment.user_id}}</p>
+      </div>
     </div>
 
     <!-- Comments -->

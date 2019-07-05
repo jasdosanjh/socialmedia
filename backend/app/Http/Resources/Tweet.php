@@ -15,7 +15,7 @@ class Tweet extends JsonResource
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffforHumans(),
             'user' => $this->user,
-            'comments' =>$this->comments,
+            'comments' => $this->comments,
         ];
     }
 }
