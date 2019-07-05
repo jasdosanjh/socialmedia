@@ -15,8 +15,8 @@ class CommentController extends Controller
     public function store(StoreCommentRequest $request, Tweet $tweet) {
         $comment = new Comment;
         $comment->body = $request->body;
-        // $comment->user_id = $request->user_id;
-        $comment->user()->associate($request->user());
+        $comment->user_id = $request->user_id;
+        // $comment->user()->associate($request->user());
         $comment->tweet_id = $request->tweet_id;
 
         return json_encode(["success" => $comment->save()]);

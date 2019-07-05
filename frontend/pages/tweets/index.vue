@@ -8,7 +8,7 @@
 
       <div v-for="(comment, index) in tweet.comments" :key="index" class="ml-5">
         {{comment.body}}
-        <p class="text-muted">{{comment.created_at}} by {{comment.user_id}}</p>
+        <p class="text-muted">{{comment.created_at}} by {{comment.name}}</p>
       </div>
 
       <div v-if="authenticated">

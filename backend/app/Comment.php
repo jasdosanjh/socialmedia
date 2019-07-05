@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    // Add link for username here when i figure out how.
+    protected $appends = ['name'];
     protected $fillable = ['body'];
     public function user() {
         return $this->belongsTo(User::class);
@@ -14,5 +14,11 @@ class Comment extends Model
 
     public function tweet() {
         return $this->belongsTo(Tweet::class);
+    }
+
+    // linking comment model to user_name
+    public function getNameAttribute()
+    {
+        return $this->user->name;
     }
 }

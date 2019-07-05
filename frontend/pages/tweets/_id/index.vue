@@ -6,7 +6,7 @@
       <p class="text-muted">{{tweet.created_at}} by {{tweet.user.name}}</p>
       <div v-for="(comment, index) in tweet.comments" :key="index" class="ml-5">
         <p>{{comment.body}}</p>
-        <p class="text-muted">{{comment.created_at}} by {{comment.user_id}}</p>
+        <p class="text-muted">{{comment.created_at}} by {{comment.name}}</p>
         <div v-if="authenticated">
           <div v-if="user.id === comment.user_id">
             <nuxt-link
