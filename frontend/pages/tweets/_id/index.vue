@@ -5,8 +5,19 @@
       <hr />
       <p class="text-muted">{{tweet.created_at}} by {{tweet.user.name}}</p>
       <div v-for="(comment, index) in tweet.comments" :key="index" class="ml-5">
-        {{comment.body}}
+        <p>{{comment.body}}</p>
         <p class="text-muted">{{comment.created_at}} by {{comment.user_id}}</p>
+        <div v-if="authenticated">
+          <div v-if="user.id === comment.user_id">
+            <nuxt-link
+              :to="{name: 'tweets-comments-edit', params: {id: $route.params.id, body: comment.id}}"
+            >
+              <button class="btn btn-outline-primary pull-right">Edit</button>
+            </nuxt-link>
+            <button class="btn btn-outline-danger" @click="deleteComment(comment.id)">Delete</button>
+          </div>
+        </div>
+        <hr />
       </div>
     </div>
 
@@ -46,6 +57,12 @@ export default {
         tweet_id: this.tweet.id,
         user_id: this.user.id
       });
+      this.$router.push("/tweets");
+    },
+    async deleteComment(id) {
+      await this.$axios.$delete(
+        `/tweets/${this.$route.params.id}/comments/${id}`
+      );
       this.$router.push("/tweets");
     }
   }
